@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UserController;
+// use App\Http\Controllers\UserController;
 // use App/Admin\Controllers\UserController;
 
 /*
@@ -16,10 +16,24 @@ use App\Http\Controllers\UserController;
 |
 */
 
+Route::group(['namespace' => 'Api'], function(){
+
+    Route::post('/auth/login','UserController@createUser');
+
+    // authentication middleware
+    Route::group(['middleware'=>['auth:sanctum']], function(){
+        Route::any('/courseList', 'CourseController@courseList');
+
+    });
+});
+
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
+
+
 });
-Route::post('/auth/login',[UserController::class,'createUser']);
-//Route::post('/auth/login',[UserController::class,'loginUser']);
+
+
 
 

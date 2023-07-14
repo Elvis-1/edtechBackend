@@ -1,7 +1,7 @@
 <?php
 
-// namespace App\Http\Controllers\Api;
-namespace App\Http\Controllers;
+ namespace App\Http\Controllers\Api;
+//namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -27,7 +27,7 @@ class UserController extends Controller
             //Validated
             $validateUser = Validator::make($request->all(),
             [
-                //'avatar' =>'required',
+                'avatar' =>'required',
                   'type' => 'required',
                  'open_id' => 'required',
                 'name' => 'required',

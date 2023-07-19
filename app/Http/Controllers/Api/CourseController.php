@@ -28,4 +28,30 @@ class CourseController extends Controller
         }
 
     }
+
+    // return course detail
+    public function courseDetail(Request $request){
+$id = $request->id;
+        try{
+
+            $result = Course::where('id','=',$id)->select('name',
+            'user_token',
+            'description',
+            'video_length',
+            'thumbnail','lesson_num', 'price', 'id')->first();
+
+            return response()->json([
+                'code' => 200,
+                'msg' => 'Courses detail is available',
+                'data' => $result
+            ], 200);
+        }catch(\Throwable $e){
+               return response()->json([
+                'code'=> 500,
+                'msg'=>$e->getMessage(),
+                'data'=>null,
+               ], 500);
+        }
+
+    }
 }

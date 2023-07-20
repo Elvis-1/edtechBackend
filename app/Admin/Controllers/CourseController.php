@@ -36,6 +36,7 @@ class CourseController extends AdminController
         // $grid->column('video_length', __('Video length'));
         $grid->column('follow', __('Follow'));
         $grid->column('score', __('Score'));
+        $grid->column('downloadable_res', __('Resources Num'));
         $grid->column('created_at', __('Created at'));
         // $grid->column('updated_at', __('Updated at'));
 
@@ -85,6 +86,7 @@ class CourseController extends AdminController
         $result = User::pluck('name', 'token');
 
        $form->select('user_token', __('Teacher'))->options($result);
+       $form->number('downloadable_res', __('Resources Num'));
        $form->display('created_at', __('Created at'));
        $form->display('updated_at',__('Updated at'));
 

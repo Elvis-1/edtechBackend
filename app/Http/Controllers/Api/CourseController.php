@@ -38,7 +38,9 @@ $id = $request->id;
             'user_token',
             'description',
             'video_length',
-            'thumbnail','lesson_num', 'price', 'id')->first();
+            'thumbnail','lesson_num', 'price',
+            'downloadable_res',
+            'id')->first();
 
             return response()->json([
                 'code' => 200,

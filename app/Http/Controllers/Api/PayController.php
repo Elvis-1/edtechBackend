@@ -110,6 +110,7 @@ $checkOutSession = Session::create(
     ]
 );
 
+// returning stripe payment url
         return response()->json([
             'code'=> 200,
             'msg'=>'Success',

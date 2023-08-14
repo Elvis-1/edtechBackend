@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('total_amount',100);
             $table->string('course_id');
             $table->smallInteger('status');
-;            $table->timestamps();
+;           $table->timestamps();
         });
     }
 

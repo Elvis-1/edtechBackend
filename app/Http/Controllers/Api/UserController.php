@@ -36,7 +36,12 @@ class UserController extends Controller
 
             ]);
 
+
+
+
+
             if($validateUser->fails()){
+
                 return response()->json([
                     'status' => false,
                     'message' => 'validation error',
@@ -45,6 +50,7 @@ class UserController extends Controller
             }
             //validated will have all user field values
             //we can save in the database
+
             $validated = $validateUser->validated();
 
             $map=[];
@@ -53,7 +59,11 @@ class UserController extends Controller
             $map['open_id'] = $validated['open_id'];
 
             $user = User::where($map)->first();
-
+            // return response()->json([
+            //     'code' => 200,
+            //     'msg' => 'user empty',
+            //     'data' => 'data'
+            // ], 200);
             //whether user has already logged in or not
             //empty means does not exist
             //then save the user in the databae for first time
@@ -85,6 +95,7 @@ class UserController extends Controller
                 ], 200);
 
             }
+
             //user previously has logged in
             $accessToken = $user->createToken(uniqid())->plainTextToken;
             $user->access_token = $accessToken;

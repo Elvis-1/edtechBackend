@@ -27,6 +27,8 @@ Route::group(['namespace' => 'Api'], function(){
         Route::any('/checkout', 'PayController@checkout');
 
     });
+    //https://1eeb-102-88-35-202.ngrok-free.app
+    Route::any('/web_go_hooks', 'PayController@web_go_hooks');
 });
 
 
